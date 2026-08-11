@@ -1,0 +1,82 @@
+/* 
+                _  _   _   _  _ ___     _____ ___   _   ___ _  _____ _  _  ___ 
+               | || | /_\ | \| |   \   |_   _| _ \ /_\ / __| |/ /_ _| \| |/ __|
+               | __ |/ _ \| .` | |) |    | | |   // _ \ (__| ' < | || .` | (_ |
+               |_||_/_/ \_\_|\_|___/     |_| |_|_/_/ \_\___|_|\_\___|_|\_|\___|          
+
+
+                          _          _____ _               _    _____             _   
+                         | |_ _ _   |  _  | |___ _ _ ___  |_|  |  _  |_ _ ___ ___| |_ 
+                         | . | | |  |     | | -_|_|_| -_| | |  |   __| | |  _| -_| '_|
+                         |___|_  |  |__|__|_|___|_|_|___|_| |  |__|  |___|___|___|_|_|
+                             |___|                      |___|                         
+
+# DATE: 2026
+# LICENSE: Licensed under the MIT License
+# REQIREMENTS: ESP32, Library Adafruit_PWMServoDriver.h
+
+# USAGE: 
+#   1. Connect ESP32 via USB port and check your COM port to be the same one as you selected here in Arduino IDE and Python Script.
+#   2. Upload the code to your ESP32.
+
+# !!IMPORTANT NOTICE!!
+
+# This is only the one half of the project, the other half is in Python, where the values from computer vision are calculated.
+# This code only reads the values, and outputs PWM Signals to the servos.
+
+Needed libraries: */
+
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
+
+Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x40);
+
+
+#define SERVOMIN  125
+#define SERVOMAX  575
+
+
+int angleToPulse(int angle) {
+  angle = constrain(angle, 0, 180);
+  return map(angle, 0, 180, SERVOMIN, SERVOMAX);
+}
+
+void setup() {
+  Serial.begin(115200);
+  Serial.setTimeout(5); 
+
+  Wire.begin(8, 9);
+  pwm.begin();
+  pwm.setPWMFreq(50); 
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+   
+    int angleThumb  = Serial.parseInt();
+    int angleIndex  = Serial.parseInt();
+    int angleMiddle = Serial.parseInt();
+    int angleRing   = Serial.parseInt();
+    int anglePinky  = Serial.parseInt();
+
+    // Map the last 2 values based on your hardware
+    
+    int thumbMapped  = map(angleThumb,  120, 160, 160, 0);
+    int indexMapped  = map(angleIndex,  112, 145, 0, 100);
+    int middleMapped = map(angleMiddle, 100, 145, 0, 110);
+    int ringMapped   = map(angleRing,   95, 150, 180, 0);
+    int pinkyMapped  = map(anglePinky,  95, 155, 160, 0);
+
+    
+    pwm.setPWM(0, 0, angleToPulse(thumbMapped));  
+    pwm.setPWM(1, 0, angleToPulse(indexMapped));  
+    pwm.setPWM(2, 0, angleToPulse(middleMapped)); 
+    pwm.setPWM(3, 0, angleToPulse(ringMapped));   
+    pwm.setPWM(4, 0, angleToPulse(pinkyMapped));  
+
+    
+    while (Serial.available() > 0) {
+      Serial.read();
+    }
+  }
+}
