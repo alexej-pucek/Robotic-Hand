@@ -20,15 +20,15 @@
 
 ---
 
-## ✨ Key Features
-* **Real-Time Tracking:** Sub-millisecond hand landmark positioning via MediaPipe.
+##  Key Features
+* **Real-Time Tracking:** fast hand landmark positioning via MediaPipe.
 * **Low Latency:** Asynchronous PySerial communication to avoid buffer delays.
 * **16-Channel Servo Control:** Driven via I2C interface on PCA9685 to conserve ESP32 GPIO pins.
 * **Custom 3D Assembly:** Custom-printed mechanical joints for smooth finger actuation.
 
 ---
 
-## 🛠️ Tech Stack & Hardware
+##  Tech Stack & Hardware
 
 | Category | Component / Library |
 | :--- | :--- |
@@ -41,12 +41,12 @@
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start Guide
 
 ### 1. Hardware Connections
 * **PCA9685 VCC** $\rightarrow$ ESP32 3.3V
 * **PCA9685 GND** $\rightarrow$ ESP32 GND & External Power GND *(Common Ground)*
-* **PCA9685 SDA/SCL** $\rightarrow$ ESP32 Default I2C Pins (GPIO 21 / 22)
+* **PCA9685 SDA/SCL** $\rightarrow$ ESP32 Default I2C Pins (Based on your model of ESP32)
 * **PCA9685 V+** $\rightarrow$ External 5V Power Supply
 
 ### 2. Firmware Installation
