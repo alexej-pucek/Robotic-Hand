@@ -1,17 +1,17 @@
-# 🤖 Computer Vision Robotic Hand (v1.0)
+#  Computer Vision Robotic Hand (v1.0)
 
-<!-- BADGES -->
+
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![C++](https://img.shields.io/badge/C%2B%2B-Arduino-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![ESP32](https://img.shields.io/badge/Hardware-ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-Computer_Vision-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-A fully functional 3D-printed robotic hand controlled in real-time using MediaPipe hand-tracking, Python processing, and an ESP32 microcontroller with a PCA9685 PWM driver.
+3D Printed Robotic Hand with real time hand tracking.
 
 ---
 
-## 📽️ Demo & Overview
+##  Demo & Overview
 
 <!-- Sem vlož link na obrázok alebo GIF z tvojho repozitára -->
 ![Robotic Hand Demo](demo.gif)
