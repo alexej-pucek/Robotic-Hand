@@ -39,6 +39,8 @@
 | **Servo Driver** | PCA9685 16-Channel 12-bit PWM I2C |
 | **Actuators** | SG90 / MG996R Servos |
 
+All the STL and 3MF Files can be found here on my Printables profile: (https://www.printables.com/model/1813325-robotic-hand-assembly-personal-project)
+
 ---
 
 ##  Quick Start Guide
